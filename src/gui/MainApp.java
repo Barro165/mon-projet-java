@@ -418,10 +418,8 @@ sess.addActionListener(e->{
 				SessionDAO dao=new SessionDAO();
 				String texte=TextFieldTxt.getText();
 				int id=Integer.parseInt(texte);
-				String texte_1=TextField_1Txt.getText();
-				LocalTime heureDebut=LocalTime.parse(texte_1);
-				String texte_2=TextField_2Txt.getText();
-				LocalTime heureFin=LocalTime.parse(texte_2);
+				String heureDebut=TextField_1Txt.getText();
+				String heureFin=TextField_2Txt.getText();
 				String texte_3=TextField_3Txt.getText();
 				int capacitéMax=Integer.parseInt(texte_3);
 				String salle=TextField_4Txt.getText();

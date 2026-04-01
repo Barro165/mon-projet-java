@@ -1,15 +1,16 @@
 package model;
-import java.time.LocalTime;
+
 
 public class Session {
 	private int id;
-	private LocalTime heureDebut;
-	private LocalTime heureFin;
+	private String heureDebut;
+	private String heureFin;
 	private int capaciteMax;
 	private String salle;
 	private String nomDom;
 	
-	public Session(int id,LocalTime heureDebut, LocalTime heureFin, int capaciteMax, String salle,String nomDom) {
+	public Session(int id,String heureDebut, String heureFin, int capaciteMax, String salle,String nomDom) {
+		this.id=id;
 		this.heureDebut=heureDebut;
 		this.heureFin=heureFin;
 		this.capaciteMax=capaciteMax;
@@ -19,10 +20,10 @@ public class Session {
 	public int getId() {
 		return id;
 	}
-	public LocalTime getHeureDebut() {
+	public String getHeureDebut() {
 		return heureDebut;
 	}
-	public LocalTime getHeureFin() {
+	public String getHeureFin() {
 		return heureFin;
 	}
 	public int getCapaciteMax() {

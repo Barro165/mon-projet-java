@@ -1,0 +1,18 @@
+# Fichiers compilés
+*.class
+
+# Dossier de compilation
+bin/
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

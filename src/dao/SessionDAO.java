@@ -1,7 +1,6 @@
 package dao;
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import model.*;
 
@@ -42,12 +41,10 @@ public class SessionDAO extends ConnectionDAO {
 			// les getters permettent de recuperer les valeurs des attributs souhaites
 			ps = con.prepareStatement("INSERT INTO SESSIONS (ID,HEUREDEBUT,HEUREFIN,CAPACITEMAX,SALLE,NOMDOM) VALUES(?,?,?,?,?,?)");
 			
-			LocalDate dateFixe=LocalDate.of(2027,1,10);
-			LocalDateTime heureDebut=LocalDateTime.of(dateFixe, session.getHeureDebut());
-			LocalDateTime heureFin=LocalDateTime.of(dateFixe, session.getHeureFin());
+			
 			ps.setInt(1, session.getId());
-			ps.setTimestamp(2, Timestamp.valueOf(heureDebut));
-			ps.setTimestamp(3, Timestamp.valueOf(heureFin));
+			ps.setString(2, session.getHeureDebut());
+			ps.setString(3, session.getHeureFin());
 			ps.setInt(4, session.getCapaciteMax());
 			ps.setString(5, session.getSalle());
 			ps.setString(6, session.getNomDom());
