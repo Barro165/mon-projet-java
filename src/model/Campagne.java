@@ -3,23 +3,27 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 public class Campagne {
-	private Date dateDebut;
-	private Date dateFin;
+	private int id;
+	private LocalDate dateDebut;
+	private LocalDate dateFin;
 	private int nombreChoixMax;
 	private String etat;
 	
-	public Campagne(Date dateDebut, Date dateFin, int nombreChoixMax,String etat) {
+	public Campagne(int id,LocalDate dateDebut, LocalDate dateFin, int nombreChoixMax,String etat) {
+		this.id=id;
 		this.dateDebut=dateDebut;
 		this.dateFin=dateFin;
 		this.nombreChoixMax=nombreChoixMax;
 		this.etat=etat;
 	}
-	public Campagne(int id, String dateDebut2, String dateFin2, int nombreChoixMax2, String etat2) {
+	
+	public int getId() {
+		return id;
 	}
-	public Date getDateDebut() {
+	public LocalDate getDateDebut() {
 		return dateDebut;
 	}
-	public Date getDateFin() {
+	public LocalDate getDateFin() {
 		return dateFin;
 	}
 	public int getNombreChoixMax() {

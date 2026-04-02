@@ -2,6 +2,7 @@ package dao;
 import java.sql.*;
 import java.util.ArrayList;
 import model.*;
+import java.sql.Date;
 
 /**
  * Classe d'acces aux donnees contenues dans la table DOMINANTE
@@ -38,12 +39,12 @@ public class CampagneDAO extends ConnectionDAO {
 			// preparation de l'instruction SQL, chaque ? represente une valeur
 			// a communiquer dans l'insertion.
 			// les getters permettent de recuperer les valeurs des attributs souhaites
-			ps = con.prepareStatement("INSERT INTO CAMPAGNE (DATEDEBUT, DATEFIN, NBCHOIXMAX, ETAT) VALUES(????)");
-			
-			ps.setDate(1, campagne.getDateDebut());
-            ps.setDate(2, campagne.getDateFin());
-			ps.setInt(3, campagne.getNombreChoixMax());
-			ps.setString(4, campagne.getEtat());
+			ps = con.prepareStatement("INSERT INTO CAMPAGNE (ID,DATEDEBUT, DATEFIN, NBCHOIXMAX, ETAT) VALUES(?,?,?,?,?)");
+			ps.setInt(1, campagne.getId());
+			ps.setDate(2, Date.valueOf(campagne.getDateDebut()));
+            ps.setDate(3, Date.valueOf(campagne.getDateFin()));
+			ps.setInt(4, campagne.getNombreChoixMax());
+			ps.setString(5, campagne.getEtat());
 			
 			// Execution de la requete
 			returnValue = ps.executeUpdate();

@@ -11,13 +11,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import dao.AdministrateurDAO;
+import dao.CampagneDAO;
 import dao.DominanteDAO;
 import dao.EtudiantDAO;
 import model.Etudiant;
 import model.Dominante;
 import dao.SessionDAO;
 import model.Session;
-import dao.CampagneDAO;
 import model.Campagne;
 
 import javax.swing.SwingUtilities;
@@ -27,6 +27,7 @@ import java.time.LocalTime;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.time.LocalDate;
 
 public class MainApp extends JFrame{
 	
@@ -100,7 +101,7 @@ public class EtudiantGUI extends JPanel {
 		add(btnNewButton_1);
 		
 		/**
-		 * Lorsqu'on appuie sur le bouton inscrire,on  est renvoyé vers la fenetre inscrire
+		 * Lorsqu'on appuie sur le bouton inscrire, on  est renvoyé vers la fenetre inscrire
 		 */
 	     btnNewButton_1.addActionListener(e -> {
 		 mainApp.setContentPane(new inscrire(mainApp));
@@ -317,6 +318,11 @@ sess.addActionListener(e->{
 	    mainApp.revalidate();
 	    mainApp.repaint();
 });
+camp.addActionListener(e->{
+	 mainApp.setContentPane(new GererCampagne(mainApp));
+	    mainApp.revalidate();
+	    mainApp.repaint();
+			});
 		}
 	}
 	
@@ -440,14 +446,11 @@ sess.addActionListener(e->{
 				
 			});
 		}
-		
 	}
 
-	/**
-	 * Classe qui permet à l'administrateur de gérer la campagne
-	 */
-	 
-	public class GererCampagne extends JPanel{
+	
+
+public class GererCampagne extends JPanel{
 		private MainApp mainApp;
 		public GererCampagne(MainApp mainApp) {
 			
@@ -464,7 +467,7 @@ sess.addActionListener(e->{
 			JTextField TextField_3Txt =new JTextField();
 			JTextField TextField_4Txt =new JTextField();
 			JButton Button_1=new JButton("Retour");
-			JButton Button=new JButton("Créer Session");
+			JButton Button=new JButton("Créer Campagne");
 			Label.setBounds(100,50,350,20);
 			Label_1.setBounds(100,100,350,20);
 			Label_2.setBounds(100,150,350,20);
@@ -499,15 +502,18 @@ sess.addActionListener(e->{
 				CampagneDAO dao=new CampagneDAO();
 				String texte=TextFieldTxt.getText();
 				int id=Integer.parseInt(texte);
-				String dateDebut=TextField_1Txt.getText();
-				String dateFin=TextField_2Txt.getText();
+				String texte_1=TextField_1Txt.getText();
+				LocalDate dateDebut=LocalDate.parse(texte_1);
+				String texte_2=TextField_2Txt.getText();
+				LocalDate dateFin=LocalDate.parse(texte_2);
 				String texte_3=TextField_3Txt.getText();
+	
 				int nombreChoixMax=Integer.parseInt(texte_3);
 				String etat=TextField_4Txt.getText();
 				Campagne campagne=new Campagne(id,dateDebut,dateFin,nombreChoixMax,etat);
 				int existe=dao.add(campagne);
 				if(existe==1) {
-					JOptionPane.showMessageDialog(null,"Session créée" );
+					JOptionPane.showMessageDialog(null,"Campagne créée" );
 				}else {
 					JOptionPane.showMessageDialog(null,"Ajout impossible");
 				}
@@ -516,6 +522,4 @@ sess.addActionListener(e->{
 		}
 		
 	}
-
-	
 }
