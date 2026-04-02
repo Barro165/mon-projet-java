@@ -17,6 +17,8 @@ import model.Etudiant;
 import model.Dominante;
 import dao.SessionDAO;
 import model.Session;
+import dao.CampagneDAO;
+import model.Campagne;
 
 import javax.swing.SwingUtilities;
 import javax.swing.JButton;
@@ -438,6 +440,81 @@ sess.addActionListener(e->{
 				
 			});
 		}
+		
+	}
+
+	/**
+	 * Classe qui permet à l'administrateur de gérer la campagne
+	 */
+	 
+	public class GererCampagne extends JPanel{
+		private MainApp mainApp;
+		public GererCampagne(MainApp mainApp) {
+			
+			this.mainApp=mainApp;
+			setLayout(null);
+			JLabel Label=new JLabel("Id");
+			JLabel Label_1=new JLabel("Date début");
+			JLabel Label_2=new JLabel("Date de fin");
+			JLabel Label_3=new JLabel("Nombre de choix maximum");
+			JLabel Label_4=new JLabel("Etat");
+			JTextField TextFieldTxt =new JTextField();
+			JTextField TextField_1Txt =new JTextField();
+			JTextField TextField_2Txt =new JTextField();
+			JTextField TextField_3Txt =new JTextField();
+			JTextField TextField_4Txt =new JTextField();
+			JButton Button_1=new JButton("Retour");
+			JButton Button=new JButton("Créer Session");
+			Label.setBounds(100,50,350,20);
+			Label_1.setBounds(100,100,350,20);
+			Label_2.setBounds(100,150,350,20);
+			Label_3.setBounds(100,200,350,20);
+			Label_4.setBounds(100,250,350,20);
+			TextFieldTxt.setBounds(350,50,150,20);
+			TextField_1Txt.setBounds(350,100,150,20);
+			TextField_2Txt.setBounds(350,150,150,20);
+			TextField_3Txt.setBounds(350,200,150,20);
+			TextField_4Txt.setBounds(350,250,150,20);
+			Button.setBounds(200,400,150,20);
+			Button_1.setBounds(1,1,100,20);
+			add (Label);
+			add (Label_1);
+			add (Label_2);
+			add (Label_3);
+			add (Label_4);
+			add(TextFieldTxt);
+			add(TextField_1Txt);
+			add(TextField_2Txt);
+			add(TextField_3Txt);
+			add(TextField_4Txt);
+			add(Button);
+			add(Button_1);
+			 Button_1.addActionListener(e->{
+	        	 mainApp.setContentPane(new Gestion(mainApp));
+	     	    mainApp.revalidate();
+	     	    mainApp.repaint();
+			});
+			Button.addActionListener(e->{
+				
+				CampagneDAO dao=new CampagneDAO();
+				String texte=TextFieldTxt.getText();
+				int id=Integer.parseInt(texte);
+				String dateDebut=TextField_1Txt.getText();
+				String dateFin=TextField_2Txt.getText();
+				String texte_3=TextField_3Txt.getText();
+				int nombreChoixMax=Integer.parseInt(texte_3);
+				String etat=TextField_4Txt.getText();
+				Campagne campagne=new Campagne(id,dateDebut,dateFin,nombreChoixMax,etat);
+				int existe=dao.add(campagne);
+				if(existe==1) {
+					JOptionPane.showMessageDialog(null,"Session créée" );
+				}else {
+					JOptionPane.showMessageDialog(null,"Ajout impossible");
+				}
+				
+			});
+		}
+		
 	}
 
 	
