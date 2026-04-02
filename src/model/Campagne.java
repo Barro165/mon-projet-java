@@ -1,28 +1,29 @@
 package model;
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Campagne {
-	private String dateDebut;
-	private String dateFin;
-	private int nbreChoixMax;
-	private String etat;
+	private Date dateDebut;
+	private Date dateFin;
+	private int nombreChoixMax;
+	private Boolean etat;
 	
-	public Campagne(String dateDebut, String dateFin, int nbreChoixMax,String etat) {
+	public Campagne(Date dateDebut, Date dateFin, int nombreChoixMax,Boolean etat) {
 		this.dateDebut=dateDebut;
 		this.dateFin=dateFin;
-		this.nbreChoixMax=nbreChoixMax;
+		this.nombreChoixMax=nombreChoixMax;
 		this.etat=etat;
 	}
-	public String getDateDebut() {
+	public Date getDateDebut() {
 		return dateDebut;
 	}
-	public String getDateFin() {
+	public Date getDateFin() {
 		return dateFin;
 	}
-	public int getNbreChoixMax() {
-		return nbreChoixMax;
+	public int getNombreChoixMax() {
+		return nombreChoixMax;
 	}
-	public String getEtat() {
+	public Boolean getEtat() {
 		return etat;
 	}
 

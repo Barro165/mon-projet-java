@@ -38,9 +38,12 @@ public class CampagneDAO extends ConnectionDAO {
 			// preparation de l'instruction SQL, chaque ? represente une valeur
 			// a communiquer dans l'insertion.
 			// les getters permettent de recuperer les valeurs des attributs souhaites
-			ps = con.prepareStatement("INSERT INTO CAMPAGNE (DATEDEBUT) VALUES(?)");
+			ps = con.prepareStatement("INSERT INTO CAMPAGNE (DATEDEBUT, DATEFIN, NBCHOIXMAX, ETAT, ID_ADMIN) VALUES(?)");
 			
-			ps.setString(1, campagne.getDateDebut());
+			ps.setDate(1, campagne.getDateDebut());
+            ps.setDate(2, campagne.getDateFin());
+			ps.setInt(3, campagne.getNombreChoixMax());
+			ps.setBoolean(3, campagne.getEtat());
 			
 			// Execution de la requete
 			returnValue = ps.executeUpdate();
