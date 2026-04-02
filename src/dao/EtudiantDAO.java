@@ -22,8 +22,8 @@ public class EtudiantDAO extends ConnectionDAO {
 	 * Permet d'ajouter un fournisseur dans la table supplier.
 	 * Le mode est auto-commit par defaut : chaque insertion est validee
 	 * 
-	 * @param supplier le fournisseur a ajouter
-	 * @return retourne le nombre de lignes ajoutees dans la table
+	 * @param etudiant le fournisseur a ajouter
+	 * @return retourne 1 si l'étudiant
 	 */
 	public int add(Etudiant etudiant) {
 		Connection con = null;
@@ -50,7 +50,7 @@ public class EtudiantDAO extends ConnectionDAO {
 
 		} catch (Exception e) {
 			if (e.getMessage().contains("ORA-00001"))
-				System.out.println("Cet identifiant de fournisseur existe déjà. Ajout impossible !");
+				System.out.println("Cet identifiant d'étudiant existe déjà. Ajout impossible !");
 			else
 				e.printStackTrace();
 		} finally {
@@ -72,10 +72,10 @@ public class EtudiantDAO extends ConnectionDAO {
 	}
 
 	/**
-	 * Permet de modifier un fournisseur dans la table supplier.
+	 * Permet de modifier un étudiant dans la table ETUDIANT.
 	 * Le mode est auto-commit par defaut : chaque modification est validee
 	 * 
-	 * @param supplier le fournisseur a modifier
+	 * @param étudiant le fournisseur a modifier
 	 * @return retourne le nombre de lignes modifiees dans la table
 	 */
 	public int update(Etudiant etudiant) {
@@ -120,8 +120,7 @@ public class EtudiantDAO extends ConnectionDAO {
 	}
 
 	/**
-	 * Permet de supprimer un fournisseur par id dans la table supplier.
-	 * Si ce dernier possede des articles, la suppression n'a pas lieu.
+	 * Permet de supprimer un étudiant par id dans la table étudiant.
 	 * Le mode est auto-commit par defaut : chaque suppression est validee
 	 * 
 	 * @param id l'id du supplier à supprimer
@@ -140,7 +139,7 @@ public class EtudiantDAO extends ConnectionDAO {
 			// preparation de l'instruction SQL, le ? represente la valeur de l'ID
 			// a communiquer dans la suppression.
 			// le getter permet de recuperer la valeur de l'ID du fournisseur
-			ps = con.prepareStatement("DELETE FROM supplier WHERE id = ?");
+			ps = con.prepareStatement("DELETE FROM ETUDIANT WHERE id = ?");
 			ps.setInt(1, id);
 
 			// Execution de la requete
@@ -174,8 +173,8 @@ public class EtudiantDAO extends ConnectionDAO {
 	/**
 	 * Permet de recuperer un fournisseur a partir de sa reference
 	 * 
-	 * @param reference la reference du fournisseur a recuperer
-	 * @return le fournisseur trouve;
+	 * @param reference la reference de l'étudiant a recuperer
+	 * @return l'étudiant trouve;
 	 * 			null si aucun fournisseur ne correspond a cette reference
 	 */
 	public Etudiant get(int id) {
@@ -229,6 +228,9 @@ public class EtudiantDAO extends ConnectionDAO {
 	}
 	/**
 	 * Méthode qui permet à un étudiant de se connecter à l'applicatio ou non
+	 * @param mail Le mail que l'étudiant a rentré
+	 * @param motDePasse Le mot de passe que l'étudiant a rentré
+	 * @return true si l'étudiant existe
 	 */
 	public boolean Con(String mail, String motDePasse) {
 	    Connection con = null;
@@ -321,52 +323,4 @@ public class EtudiantDAO extends ConnectionDAO {
 	}
 
 	
-	/**
-	 * ATTENTION : Cette méthode n'a pas vocation à être executée lors d'une utilisation normale du programme !
-	 * Elle existe uniquement pour TESTER les méthodes écrites au-dessus !
-	 * 
-	 * @param args non utilisés
-	 * @throws SQLException si une erreur se produit lors de la communication avec la BDD
-	 */
-	public static void main(String[] args) throws SQLException {
-		int returnValue;
-		EtudiantDAO etudiantDAO = new EtudiantDAO();
-		// Ce test va utiliser directement votre BDD, on essaie d'éviter les collisions avec vos données en prenant de grands ID
-		int[] ids = {424242, 424243, 424244};
-		// test du constructeur
-		Etudiant e1 = new Etudiant("Amadou", "Mbodj", "monfournisseurprincipal@mail.com","1ère année");
-		Etudiant e2 = new Etudiant( "Lala", "Diallo", "monfournisseursecondaire@mail.com","1ère année");
-		Etudiant e3 = new Etudiant( "RORO", "Rety", "monfournisseursecours@mail.com","1 ère année");
-		// test de la methode add
-		returnValue = etudiantDAO.add(e1);
-		System.out.println(returnValue + " etudiant ajoute");
-		returnValue = etudiantDAO.add(e2);
-		System.out.println(returnValue + " etudiant ajoute");
-		returnValue = etudiantDAO.add(e3);
-		System.out.println(returnValue + " etudiant ajoute");
-		System.out.println();
-		
-		// test de la methode get
-		Etudiant eg = etudiantDAO.get(1);
-		// appel implicite de la methode toString de la classe Object (a eviter)
-		System.out.println(eg);
-		System.out.println();
-		
-		// test de la methode getList
-		ArrayList<Etudiant> list = etudiantDAO.getList();
-		for (Etudiant s : list) {
-			// appel explicite de la methode toString de la classe Object (a privilegier)
-			System.out.println(s.toString());
-		}
-		System.out.println();
-		// test de la methode delete
-		// On supprime les 3 articles qu'on a créé
-		returnValue = 0;
-		for (int id : ids) {
-//			returnValue = supplierDAO.delete(id);
-			System.out.println(returnValue + " fournisseur supprime");
-		}
-		
-		System.out.println();
-	}
 }

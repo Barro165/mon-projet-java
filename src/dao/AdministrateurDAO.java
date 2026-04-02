@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import model.*;
 
 	/**
-	 * Classe d'acces aux donnees contenues dans la table étudiant
+	 * Classe d'acces aux donnees contenues dans la table ADMINISTRATEUR
 	 * 
 	 * @author ESIGELEC - TIC Department
 	 * @version 2.0
@@ -22,8 +22,8 @@ import model.*;
 		 * Permet d'ajouter un fournisseur dans la table supplier.
 		 * Le mode est auto-commit par defaut : chaque insertion est validee
 		 * 
-		 * @param supplier le fournisseur a ajouter
-		 * @return retourne le nombre de lignes ajoutees dans la table
+		 * @param dom la  dominante a ajouter
+		 * @return retourne 1 si la dominante est ajoutée et 0 si ce n'est oas le cas
 		 */
 		public int add(Dominante dom) {
 			Connection con = null;
@@ -68,7 +68,12 @@ import model.*;
 			}
 			return returnValue;
 		}
-
+/**
+ * Classe qui permet à l'administrateur de se connecter
+ * @param mail le mail entré par l'utilisateur
+ * @param motDePasse le mot de passe entré par l'utilisateur
+ * @return retourne true si le mail et le mot de passe tapés correspondent àcelui de l'administrateur et false dans le cas contraire
+ */
 
 		
 		

@@ -75,8 +75,8 @@ public class EtudiantGUI extends JPanel {
 		add(motdepasseetudiantTxt);
 		motdepasseetudiantTxt.setColumns(10);
 		
-		/*
-		 * Lorsqu'on appuie sur le bouton "Connecter", leprogramme va chercher si cette personn existe ou pas
+		/**
+		 * Lorsqu'on appuie sur le bouton "Connecter", le programme va chercher si cette personn existe ou pas
 		 */
 		btnNewButton = new JButton("Se connecter");
 		btnNewButton.setBounds(349, 119, 113, 23);
@@ -98,7 +98,7 @@ public class EtudiantGUI extends JPanel {
 		add(btnNewButton_1);
 		
 		/**
-		 * Lorsqu'on appuie sur le bouton inscrire,onest renvoyé vers la fenetre inscrire
+		 * Lorsqu'on appuie sur le bouton inscrire,on  est renvoyé vers la fenetre inscrire
 		 */
 	     btnNewButton_1.addActionListener(e -> {
 		 mainApp.setContentPane(new inscrire(mainApp));
@@ -259,7 +259,7 @@ public class Admin extends JPanel{
 
 
 /**
- * Classe d'accueil de l'appli 
+ * Classe d'accueil de l'application
  */
 	public class Rang extends JPanel{
 		private MainApp mainApp;
@@ -320,7 +320,7 @@ sess.addActionListener(e->{
 	
 	
 	/**
-	 * Classe de création de  dominante
+	 * Classe de création de dominante
 	 */
 	public class GererDom extends JPanel{
 		private MainApp mainApp;
@@ -360,6 +360,10 @@ sess.addActionListener(e->{
 			});
 		}
 	}
+	/**
+	 * Classe qui permet à l'administrateur de gérer des  sessions
+	 */
+	 
 	public class GererSess extends JPanel{
 		private MainApp mainApp;
 		public GererSess(MainApp mainApp) {

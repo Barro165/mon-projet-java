@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import model.*;
 
 /**
- * Classe d'acces aux donnees contenues dans la table étudiant
+ * Classe d'acces aux donnees contenues dans la table DOMINANTE
  * 
  * @author ESIGELEC - TIC Department
  * @version 2.0
@@ -22,8 +22,8 @@ public class DominanteDAO extends ConnectionDAO {
 	 * Permet d'ajouter un fournisseur dans la table supplier.
 	 * Le mode est auto-commit par defaut : chaque insertion est validee
 	 * 
-	 * @param supplier le fournisseur a ajouter
-	 * @return retourne le nombre de lignes ajoutees dans la table
+	 * @param dominante la dominante a ajouter
+	 * @return retourne 1 si la dominante est ajoutee et 0 dans le cas contarire
 	 */
 	public int add(Dominante dominante) {
 		Connection con = null;

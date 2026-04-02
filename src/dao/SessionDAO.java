@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import model.*;
 
 /**
- * Classe d'acces aux donnees contenues dans la table étudiant
+ * Classe d'acces aux donnees contenues dans la table SESSIONS
  * 
  * @author ESIGELEC - TIC Department
  * @version 2.0
@@ -23,8 +23,8 @@ public class SessionDAO extends ConnectionDAO {
 	 * Permet d'ajouter un fournisseur dans la table supplier.
 	 * Le mode est auto-commit par defaut : chaque insertion est validee
 	 * 
-	 * @param supplier le fournisseur a ajouter
-	 * @return retourne le nombre de lignes ajoutees dans la table
+	 * @param session la session a ajouter
+	 * @return retourne 1  si la session est ajoutee et 0 dans le cas  contraire
 	 */
 	public int add(Session session) {
 		Connection con = null;
