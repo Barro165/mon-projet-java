@@ -43,7 +43,7 @@ public class CampagneDAO extends ConnectionDAO {
 			ps.setDate(1, campagne.getDateDebut());
             ps.setDate(2, campagne.getDateFin());
 			ps.setInt(3, campagne.getNombreChoixMax());
-			ps.setBoolean(3, campagne.getEtat());
+			ps.setBoolean(4, campagne.getEtat());
 			
 			// Execution de la requete
 			returnValue = ps.executeUpdate();
