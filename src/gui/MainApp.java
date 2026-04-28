@@ -73,13 +73,22 @@ public class EtudiantGUI extends JPanel {
 		add(mailetudiantTxt);
 		mailetudiantTxt.setColumns(10);
 		
-		 motdepasseetudiantTxt = new JTextField();
+		motdepasseetudiantTxt = new JTextField();
 		motdepasseetudiantTxt.setBounds(400, 42, 150, 20);
 		add(motdepasseetudiantTxt);
 		motdepasseetudiantTxt.setColumns(10);
+
+		JButton Button_1=new JButton("Retour");
+		Button_1.setBounds(50, 0, 113, 23);
+		add(Button_1);
+			 Button_1.addActionListener(e->{
+            	 mainApp.setContentPane(new Rang(mainApp));
+         	    mainApp.revalidate();
+         	    mainApp.repaint();
+			});
 		
 		/**
-		 * Lorsqu'on appuie sur le bouton "Connecter", le programme va chercher si cette personn existe ou pas
+		 * Lorsqu'on appuie sur le bouton "Connecter", le programme va chercher si cette personne existe ou pas
 		 */
 		btnNewButton = new JButton("Se connecter");
 		btnNewButton.setBounds(349, 119, 113, 23);
@@ -141,6 +150,14 @@ public class inscrire extends  JPanel {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		JButton Button_1=new JButton("Retour");
+		Button_1.setBounds(50, 0, 113, 23);
+		add(Button_1);
+			 Button_1.addActionListener(e->{
+            	 mainApp.setContentPane(new EtudiantGUI(mainApp));
+         	    mainApp.revalidate();
+         	    mainApp.repaint();
+			});
 	
 		nomTxt = new JTextField();
 		nomTxt.setBounds(400, 3, 150, 20);
@@ -219,6 +236,15 @@ public class Admin extends JPanel{
 		 JTextField mailadminTxt;
 		 JTextField motdepasseadmintTxt;
 		 JButton btnNewButton;
+		
+		JButton Button_1=new JButton("Retour");
+		Button_1.setBounds(50, 0, 113, 23);
+		add(Button_1);
+			 Button_1.addActionListener(e->{
+            	 mainApp.setContentPane(new Rang(mainApp));
+         	    mainApp.revalidate();
+         	    mainApp.repaint();
+			});
 		 
 		 JLabel lblLabel = new JLabel("Mail");
 			lblLabel.setBounds(244, 0, 92, 20);
@@ -272,8 +298,8 @@ public class Admin extends JPanel{
 			setLayout(null);
 			JButton admin=new JButton("Administrateur");
 			JButton etudiant=new JButton("Etudiant");
-			admin.setBounds(100,120,150,20);
-			etudiant.setBounds(100,200,150,20);
+			admin.setBounds(325,120,150,23);
+			etudiant.setBounds(325,200,150,23);
 			add (admin);
 			add(etudiant);
 			etudiant.addActionListener(e -> {
