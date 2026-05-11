@@ -22,8 +22,8 @@ public class DominanteDAO extends ConnectionDAO {
 	 * Permet d'ajouter un fournisseur dans la table supplier.
 	 * Le mode est auto-commit par defaut : chaque insertion est validee
 	 * 
-	 * @param dominante la dominante a ajouter
-	 * @return retourne 1 si la dominante est ajoutee et 0 dans le cas contarire
+	 * @param dom la  dominante a ajouter
+	 * @return retourne 1 si la dominante est ajoutée et 0 si ce n'est oas le cas
 	 */
 	public int add(Dominante dominante) {
 		Connection con = null;
