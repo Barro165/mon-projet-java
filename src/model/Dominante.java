@@ -21,6 +21,9 @@ public class Dominante {
 	public void supprimerSession(Session session) {
 		listeSession.remove(session);
 	}
+	public ArrayList<Session> getListeSession() {
+    return listeSession;
+}
 	public String display() {
 		String text="Nom:"+"\n";
 		if(listeSession.size()!=0) {
