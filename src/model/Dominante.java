@@ -2,8 +2,8 @@ package model;
 import java.util.ArrayList;
 public class Dominante {
 	private String nom;
-	ArrayList<Session>listeSessions=new ArrayList();
-	private ArrayList<Session>listeSession=new ArrayList();
+	
+	private ArrayList<Session>listeSession=new ArrayList<>();
 	
 	public Dominante(String nom) {
 		this.nom=nom;
@@ -21,14 +21,16 @@ public class Dominante {
 	public void supprimerSession(Session session) {
 		listeSession.remove(session);
 	}
-	public void display() {
-		System.out.println("Nom"+nom);
+	public ArrayList<Session> getListeSession() {
+    return listeSession;
+}
+	public String display() {
+		String text="Nom:"+"\n";
 		if(listeSession.size()!=0) {
 			for(int i=0;i<listeSession.size();i++) {
-				
-			}
+				text+=listeSession.get(i).display();			}
 		}
-	}
+		return text;	}
 	
 
 }

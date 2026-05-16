@@ -26,9 +26,7 @@ public Administrateur(String nom, String prenom, String mail,String motDePasse){
 	
 	
 	
-	public void Campagne(String dateDebut, String dateFin, int nbreChoixMax) {
-		Campagne campagne=new Campagne(dateDebut, dateFin, nbreChoixMax);
-	}
+	
 
 }
 
